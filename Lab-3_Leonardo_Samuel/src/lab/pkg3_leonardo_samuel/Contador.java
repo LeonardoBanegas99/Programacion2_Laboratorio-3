@@ -6,14 +6,14 @@ import java.util.ArrayList;
 public class Contador extends Freelance {
     private ArrayList<ProyectoComercial> contador = new ArrayList();
     private String universidad;
-    private String estadodeinscripcion;
+    private boolean estadodeinscripcion;
     private String hobbies;
 
     public Contador() {
         super();
     }
 
-    public Contador(String universidad, String estadodeinscripcion, String hobbies, String nombre, String contrasena, String genero, int edad, int dinero, String ciudad, String telefono, String identidad, String correo) {
+    public Contador(String universidad, boolean estadodeinscripcion, String hobbies, String nombre, String contrasena, String genero, int edad, int dinero, String ciudad, String telefono, String identidad, String correo) {
         super(nombre, contrasena, genero, edad, dinero, ciudad, telefono, identidad, correo);
         this.universidad = universidad;
         this.estadodeinscripcion = estadodeinscripcion;
@@ -36,11 +36,11 @@ public class Contador extends Freelance {
         this.universidad = universidad;
     }
 
-    public String getEstadodeinscripcion() {
+    public boolean getEstadodeinscripcion() {
         return estadodeinscripcion;
     }
 
-    public void setEstadodeinscripcion(String estadodeinscripcion) {
+    public void setEstadodeinscripcion(boolean estadodeinscripcion) {
         this.estadodeinscripcion = estadodeinscripcion;
     }
 
