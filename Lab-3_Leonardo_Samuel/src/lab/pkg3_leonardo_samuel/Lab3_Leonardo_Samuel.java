@@ -5,11 +5,38 @@ import java.util.Scanner;
 public class Lab3_Leonardo_Samuel {
 
     private Scanner sc = new Scanner(System.in);
-    private ConnectiveLine Cline;
+    private ConnectiveLine Cline = new ConnectiveLine();
+    private Administrador admin = new Administrador();
 
     public static void main(String[] args) {
-        System.out.println("m");
-        System.out.println("a");
+        new Lab3_Leonardo_Samuel();
+
+    }
+
+    public Lab3_Leonardo_Samuel() {
+        int opcion = 0;
+        while (opcion != 5) {
+            System.out.println("1. Agregar persona\n"
+                    + "2. Agregar Empresa\n"
+                    + "3. Login\n"
+                    + "4. Agregar proyectos\n"
+                    + "5. Salir\n"
+                    + "Ingrese la opcion que desea hacer: ");
+            opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    registrarpersona();
+                    break;
+                case 2:
+                    agregarrempresa();
+                    break;
+                case 3:
+                    logIn();
+                    break;
+
+            }
+        }
 
     }
 
@@ -26,26 +53,33 @@ public class Lab3_Leonardo_Samuel {
                 break;
             }
         }
-        for (int i = 0; i < Cline.getPersonas().size(); i++) {
-            if ((Cline.getPersonas().get(i).getCorreo().equals(correo))) {
-                if (((Administrador) Cline.getPersonas().get(i)).getContrasena().equals(contra)) {
-                    Administrador ad = ((Administrador) Cline.getPersonas().get(i));
-                    int pos = i;
-                    logInAdministrador(ad, pos);
-                    break;
+        for (Personas p : Cline.getPersonas()) {
+            if (p instanceof Administrador) {
+                if (p.getCorreo().equals(correo)) {
+                    if(((Administrador)p).getContrasena().equals(contra)){
+                        Administrador ad = ((Administrador) p);
+                        int pos = Cline.getPersonas().indexOf(p);
+                        logInAdministrador(ad, pos);
+                        break;
+                    }
                 }
-                if (((Freelance) Cline.getPersonas().get(i)).getContrasena().equals(contra)) {
-                    Freelance fl = ((Freelance) Cline.getPersonas().get(i));
-                    int pos = i;
-                    logInFreelance(fl, pos);
-                    break;
+            }else if(p instanceof Freelance){
+                if (p.getCorreo().equals(correo)) {
+                    if(((Administrador)p).getContrasena().equals(contra)){
+                        Freelance fl = ((Freelance) p);
+                        int pos = Cline.getPersonas().indexOf(p);
+                        logInFreelance(fl, pos);
+                        break;
+                    }
                 }
             }
+                
+            }
         }
+                    
+    
 
-    }
 //yaaaaaaaaaaaaaaaaaa
-
     private void logInEmpresas(Empresa ad, int pos) {
         char resp = 's';
         while (resp == 's' || resp == 'S') {
@@ -401,457 +435,8 @@ public class Lab3_Leonardo_Samuel {
             resp = sc.next().charAt(0);
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    public void registrarpersona(){
+
+    public void registrarpersona() {
         System.out.println("Ingrese el numero de identidad: ");
         String identidad = sc.next();
         System.out.println("Ingrese el correo: ");
@@ -862,7 +447,7 @@ public class Lab3_Leonardo_Samuel {
                 + "2-Freelance\n"
                 + "Ingrese hacia donde desea ir: ");
         int opcion = sc.nextInt();
-        switch (opcion){
+        switch (opcion) {
             case 1:
                 System.out.println("Ingrese el nombre de usuario: ");
                 String usuario = sc.next();
@@ -885,7 +470,7 @@ public class Lab3_Leonardo_Samuel {
                 String ciudad = sc.next();
                 System.out.println("Ingrese el telefono: ");
                 String telefono = sc.next();
-                Cline.getPersonas().add(new Freelance( nombre,  contrasena1,  genero,  edad,  dinero,  ciudad,  telefono, identidad, correo));
+                Cline.getPersonas().add(new Freelance(nombre, contrasena1, genero, edad, dinero, ciudad, telefono, identidad, correo));
                 System.out.println(""
                         + "1. Desarrollador Web\n"
                         + "2. Fotografo\n"
@@ -894,8 +479,8 @@ public class Lab3_Leonardo_Samuel {
                         + "5. Marketing\n"
                         + "6. Contador\n"
                         + "Ingrese que desea registrar: ");
-                int opci= sc.nextInt();
-                switch (opci){
+                int opci = sc.nextInt();
+                switch (opci) {
                     case 1:
                         System.out.println("Ingrese el lenguaje de programacion: ");
                         String lenguajeprogra = sc.next();
@@ -924,7 +509,7 @@ public class Lab3_Leonardo_Samuel {
                         String universidad1 = sc.next();
                         System.out.println("Ingrese su hobbie: ");
                         String hobbies = sc.next();
-                        Cline.getPersonas().add(new DisenadorGrafico( universidad1, hobbies, nombre, contrasena1, genero, edad, dinero, ciudad, telefono, identidad, correo));
+                        Cline.getPersonas().add(new DisenadorGrafico(universidad1, hobbies, nombre, contrasena1, genero, edad, dinero, ciudad, telefono, identidad, correo));
                         break;
                     case 5:
                         System.out.println("Ingrese la red social: ");
@@ -934,17 +519,39 @@ public class Lab3_Leonardo_Samuel {
                     case 6:
                         System.out.println("Ingrese el universidad: ");
                         String universidad2 = sc.next();
-                        System.out.println("Ingrese el estado de inscripcion: ");
-                        String estadodeinscripcion = sc.next();
+                        System.out.println("Ingrese estado de inscripcion: ");
+                        System.out.println("1) True");
+                        System.out.println("2) False");
+                        boolean tipo = true;
+                        int op = sc.nextInt();
+                        if (op == 1) {
+                            tipo = true;
+                        } else if (op == 2) {
+                            tipo = false;
+                        } else {
+                            while (op < 1 || op > 2) {
+                                System.out.println("ERROR");
+                                System.out.println("Ingrese categoria: ");
+                                System.out.println("1) True");
+                                System.out.println("2) False");
+                                op = sc.nextInt();
+                                if (op == 1) {
+                                    tipo = true;
+                                } else if (op == 2) {
+                                    tipo = false;
+                                }
+                            }
+                        }
                         System.out.println("Ingrese el hobbie: ");
                         String hobbies1 = sc.next();
-                        Cline.getPersonas().add(new Contador(universidad2, estadodeinscripcion, hobbies1, nombre, contrasena1, genero, edad, dinero, ciudad, telefono, identidad, correo));
+                        Cline.getPersonas().add(new Contador(universidad2, tipo, hobbies1, nombre, contrasena1, genero, edad, dinero, ciudad, telefono, identidad, correo));
                         break;
                 }
                 break;
         }
     }
-    public void agregarrempresa(){
+
+    public void agregarrempresa() {
         System.out.println("Ingrese el nombre: ");
         String nombre1 = sc.next();
         System.out.println("Ingrese el telefono: ");
